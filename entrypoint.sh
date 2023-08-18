@@ -12,7 +12,6 @@ function main() {
   aws_configure
   login
   docker_build $INPUT_TAGS $ACCOUNT_URL
-  create_ecr_repo $INPUT_CREATE_REPO
   docker_push_to_ecr $INPUT_TAGS $ACCOUNT_URL
 }
 
@@ -44,12 +43,8 @@ function docker_build() {
 
 function docker_push_to_ecr() {
   echo "Attempting to push docker image"
-  local TAG=$1
-  local DOCKER_TAGS=$(echo "$TAG" | tr "," "\n")
-  for tag in $DOCKER_TAGS; do
-    docker push $2/$INPUT_REPO:$tag
-  done
-  echo "== FINISHED PUSH TO ECR"
+  docker push -a "$ACCOUNT_URL"/admin-backend/base:latest
+  echo "Push successful!"
 }
 
 main
