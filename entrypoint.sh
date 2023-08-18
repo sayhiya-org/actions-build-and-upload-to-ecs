@@ -38,7 +38,7 @@ function login() {
 
 function docker_build() {
   echo "Attempting to build docker image"
-  docker build --build-arg $INPUT_EXTRA_BUILD_ARGS -f $INPUT_DOCKERFILE
+  docker build . --build-arg $INPUT_EXTRA_BUILD_ARGS -f $INPUT_DOCKERFILE
   echo "Build Successful!"
 }
 
