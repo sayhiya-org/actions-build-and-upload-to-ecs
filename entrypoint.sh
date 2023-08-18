@@ -43,7 +43,7 @@ function docker_build() {
 
 function docker_push_to_ecr() {
   echo "Attempting to push docker image"
-  docker push -a "$ACCOUNT_URL"/admin-backend/base:latest
+  docker push -a "$ACCOUNT_URL"/admin-backend/base
   echo "Push successful!"
 }
 
